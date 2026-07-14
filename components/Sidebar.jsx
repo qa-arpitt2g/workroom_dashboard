@@ -5,12 +5,9 @@ import { motion } from 'framer-motion';
 import { 
   Home, 
   CheckSquare, 
-  User, 
   Users, 
   Building2, 
   FileText, 
-  Calendar, 
-  Settings,
   ChevronLeft
 } from 'lucide-react';
 import styles from './Sidebar.module.css';
@@ -18,12 +15,9 @@ import styles from './Sidebar.module.css';
 const menuItems = [
   { id: 'overview', label: 'Overview', icon: Home },
   { id: 'tasks', label: 'Tasks', icon: CheckSquare },
-  { id: 'my-tasks', label: 'My Tasks', icon: User },
   { id: 'team', label: 'Team', icon: Users },
   { id: 'departments', label: 'Departments', icon: Building2 },
   { id: 'reports', label: 'Reports', icon: FileText },
-  { id: 'calendar', label: 'Calendar', icon: Calendar },
-  { id: 'settings', label: 'Settings', icon: Settings },
 ];
 
 export default function Sidebar() {
