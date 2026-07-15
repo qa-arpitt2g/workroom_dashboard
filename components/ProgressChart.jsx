@@ -1,14 +1,14 @@
 'use client';
 
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip, Area, AreaChart } from 'recharts';
 import { ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import styles from './ProgressChart.module.css';
 
 export default function ProgressChart({ data }) {
   return (
-    <motion.div 
+    <motion.div
       className={styles.card}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -21,44 +21,58 @@ export default function ProgressChart({ data }) {
         </button>
       </div>
 
-      <div className={styles.chartContainer}>
-        <ResponsiveContainer width="100%" height={260}>
-          <LineChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+      <div className={styles.chartContainer} style={{ width: '100%', height: '260px' }}>
+        <ResponsiveContainer width="100%" height="100%">
+          <AreaChart data={data} margin={{ top: 10, right: 10, left: -15, bottom: 0 }}>
             <defs>
-              <linearGradient id="colorProgress" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="var(--primary-light)" stopOpacity={0.1}/>
-                <stop offset="95%" stopColor="var(--primary-light)" stopOpacity={0}/>
+              <linearGradient id="colorProgressArea" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.15}/>
+                <stop offset="95%" stopColor="#3B82F6" stopOpacity={0.02}/>
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--border-color)" opacity={0.5} />
-            <XAxis 
-              dataKey="name" 
-              axisLine={false} 
-              tickLine={false} 
-              tick={{ fill: 'var(--text-secondary)', fontSize: 12 }} 
-              dy={10}
+            <CartesianGrid
+              strokeDasharray="3 3"
+              vertical={false}
+              stroke="#E5E7EB"
+              opacity={0.8}
             />
-            <YAxis 
-              axisLine={false} 
-              tickLine={false} 
-              tick={{ fill: 'var(--text-secondary)', fontSize: 12 }} 
+            <XAxis
+              dataKey="name"
+              axisLine={false}
+              tickLine={false}
+              tick={{ fill: '#6B7280', fontSize: 12 }}
+              dy={8}
+            />
+            <YAxis
+              axisLine={false}
+              tickLine={false}
+              tick={{ fill: '#6B7280', fontSize: 12 }}
               tickFormatter={(value) => `${value}%`}
+              domain={[0, 100]}
+              ticks={[0, 25, 50, 75, 100]}
             />
-            <Tooltip 
-              contentStyle={{ borderRadius: '8px', border: '1px solid var(--border-color)', boxShadow: 'var(--shadow-md)' }}
-              itemStyle={{ color: 'var(--primary)' }}
+            <Tooltip
+              contentStyle={{
+                borderRadius: '8px',
+                border: '1px solid #E5E7EB',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+                fontSize: '0.8rem'
+              }}
+              itemStyle={{ color: '#3B82F6', fontWeight: 500 }}
+              formatter={(value) => [`${value}%`, 'Progress']}
             />
-            <Line 
-              type="monotone" 
-              dataKey="progress" 
-              stroke="var(--primary-light)" 
-              strokeWidth={3}
-              dot={{ r: 4, strokeWidth: 2, fill: 'var(--card-bg)', stroke: 'var(--primary)' }}
-              activeDot={{ r: 6, fill: 'var(--primary)' }}
+            <Area
+              type="monotone"
+              dataKey="progress"
+              stroke="#3B82F6"
+              strokeWidth={2.5}
+              fill="url(#colorProgressArea)"
+              dot={{ r: 5, strokeWidth: 2, fill: '#FFFFFF', stroke: '#3B82F6' }}
+              activeDot={{ r: 7, fill: '#3B82F6', strokeWidth: 0 }}
               animationDuration={1500}
               animationEasing="ease-in-out"
             />
-          </LineChart>
+          </AreaChart>
         </ResponsiveContainer>
       </div>
     </motion.div>

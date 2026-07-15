@@ -8,11 +8,11 @@ import styles from './TaskTable.module.css';
 
 const getIcon = (department) => {
   switch(department) {
-    case 'Design': return <Layout size={18} />;
-    case 'Engineering': return <Settings size={18} />;
-    case 'Product': return <Box size={18} />;
-    case 'Marketing': return <Users size={18} />;
-    default: return <FileText size={18} />;
+    case 'Design': return <Layout size={17} />;
+    case 'Engineering': return <Settings size={17} />;
+    case 'Product': return <Box size={17} />;
+    case 'Marketing': return <Users size={17} />;
+    default: return <FileText size={17} />;
   }
 };
 
@@ -28,7 +28,7 @@ const getIconColor = (department) => {
 
 export default function TaskTable({ tasks }) {
   return (
-    <motion.div 
+    <motion.div
       className={styles.card}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -49,13 +49,15 @@ export default function TaskTable({ tasks }) {
         <table className={styles.table}>
           <tbody>
             {tasks.map((task) => (
-              <motion.tr 
-                key={task.id} 
-                className={styles.row}
-                whileHover={{ backgroundColor: 'var(--hover-bg)' }}
-              >
+              <tr key={task.id} className={styles.row}>
                 <td className={styles.taskCell}>
-                  <div className={styles.taskIconWrapper} style={{ color: getIconColor(task.department), backgroundColor: `${getIconColor(task.department)}15` }}>
+                  <div
+                    className={styles.taskIconWrapper}
+                    style={{
+                      color: getIconColor(task.department),
+                      backgroundColor: `${getIconColor(task.department)}18`
+                    }}
+                  >
                     {getIcon(task.department)}
                   </div>
                   <div className={styles.taskInfo}>
@@ -65,7 +67,7 @@ export default function TaskTable({ tasks }) {
                     </div>
                   </div>
                 </td>
-                
+
                 <td className={styles.statusCell}>
                   <StatusBadge status={task.status} />
                 </td>
@@ -77,18 +79,18 @@ export default function TaskTable({ tasks }) {
 
                 <td className={styles.actionCell}>
                   <button className={styles.playButton}>
-                    <Play size={14} fill="currentColor" />
+                    <Play size={12} fill="currentColor" />
                   </button>
                   <button className={styles.moreButton}>
-                    <MoreVertical size={16} />
+                    <MoreVertical size={15} />
                   </button>
                 </td>
-              </motion.tr>
+              </tr>
             ))}
           </tbody>
         </table>
       </div>
-      
+
       <div className={styles.footer}>
         <button className={styles.footerLink}>View all tasks</button>
       </div>

@@ -14,46 +14,54 @@ const iconMap = {
 export default function KPICard({ data, delay }) {
   const Icon = iconMap[data.icon] || Clock;
 
-  // Simple sparkline path generation
+  // Sparkline path generation
   const min = Math.min(...data.chartData);
   const max = Math.max(...data.chartData);
   const range = max - min || 1;
-  const width = 120;
-  const height = 30;
+  const width = 110;
+  const height = 35;
   const step = width / (data.chartData.length - 1);
-  
-  const pathData = data.chartData.map((val, index) => {
+
+  const points = data.chartData.map((val, index) => {
     const x = index * step;
-    const y = height - ((val - min) / range) * height;
-    return `${index === 0 ? 'M' : 'L'} ${x} ${y}`;
+    const y = height - ((val - min) / range) * (height - 4) - 2;
+    return { x, y };
+  });
+
+  // Create smooth bezier curve
+  const pathData = points.map((pt, i) => {
+    if (i === 0) return `M ${pt.x} ${pt.y}`;
+    const prev = points[i - 1];
+    const cpx = (prev.x + pt.x) / 2;
+    return `C ${cpx} ${prev.y} ${cpx} ${pt.y} ${pt.x} ${pt.y}`;
   }).join(' ');
 
-  // Smooth curve logic
-  const smoothPath = pathData.replace(/L/g, 'S'); // basic smoothing approximation, or just stick to L for sparkline
-  // For a better look, let's use a standard bezier approximation if needed, but linear is fine for small sparklines, let's just make it look smooth by styling.
+  // Parse trend to show arrow + percent + label
+  const trendUp = data.trend.includes('↑');
+  const trendPct = data.trend.replace('↑', '').replace('↓', '').trim();
 
   return (
-    <motion.div 
+    <motion.div
       className={styles.card}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
-      whileHover={{ y: -4, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01)' }}
+      whileHover={{ y: -3, boxShadow: '0 8px 24px rgba(0,0,0,0.10)' }}
     >
       <div className={styles.header}>
         <div className={styles.titleInfo}>
           <h3 className={styles.title}>{data.title}</h3>
           <div className={styles.value}>{data.value}</div>
         </div>
-        <div className={styles.iconWrapper} style={{ color: data.accent, backgroundColor: `${data.accent}15` }}>
-          <Icon size={24} />
+        <div className={styles.iconWrapper} style={{ color: data.accent, backgroundColor: `${data.accent}18` }}>
+          <Icon size={22} />
         </div>
       </div>
-      
+
       <div className={styles.footer}>
         <div className={styles.trendInfo}>
           <span className={`${styles.trend} ${styles[data.trendColor]}`}>
-            {data.trend}
+            {trendUp ? '↑' : '↓'} {trendPct}
           </span>
           <span className={styles.trendLabel}>{data.trendLabel}</span>
         </div>

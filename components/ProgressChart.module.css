@@ -1,9 +1,9 @@
 .card {
   background-color: var(--card-bg);
   border-radius: var(--border-radius);
-  padding: 24px;
+  padding: 22px 24px;
   border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -13,11 +13,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .title {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text-main);
   margin: 0;
@@ -27,14 +27,22 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
   background: none;
   border: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: var(--transition-smooth);
+}
+
+.filterButton:hover {
+  background-color: var(--hover-bg);
+  color: var(--text-main);
 }
 
 .chartContainer {
   flex: 1;
   width: 100%;
-  min-height: 260px;
+  height: 260px;
 }

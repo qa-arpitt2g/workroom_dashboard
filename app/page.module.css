@@ -1,20 +1,21 @@
 .dashboard {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
   width: 100%;
 }
 
 .kpiGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: 18px;
 }
 
 .chartGrid {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 24px;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 18px;
+  align-items: stretch;
 }
 
 .progressDonut {
@@ -27,8 +28,9 @@
 
 .bottomGrid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 24px;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 18px;
+  align-items: stretch;
 }
 
 .taskTable {
@@ -43,7 +45,7 @@
   .chartGrid {
     grid-template-columns: 1fr 1fr;
   }
-  
+
   .bottomGrid {
     grid-template-columns: 1fr 1fr;
   }
@@ -53,11 +55,11 @@
   .kpiGrid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .bottomGrid {
     grid-template-columns: 1fr;
   }
-  
+
   .chartGrid {
     grid-template-columns: 1fr;
   }

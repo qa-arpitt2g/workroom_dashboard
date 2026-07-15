@@ -19,7 +19,7 @@ export const dashboardData = {
       trendLabel: "from last week",
       trendColor: "success",
       icon: "CheckSquare",
-      accent: "#22C55E",
+      accent: "#3B82F6",
       chartData: [15, 18, 22, 28, 26, 32, 38]
     },
     {
@@ -88,17 +88,17 @@ export const dashboardData = {
     }
   ],
   departments: [
-    { name: "Engineering", value: 42, hours: "142h 30m", color: "#0F766E" },
-    { name: "Design", value: 25, hours: "85h 15m", color: "#F59E0B" },
-    { name: "Marketing", value: 16, hours: "56h 30m", color: "#8B5CF6" },
-    { name: "Product", value: 11, hours: "38h 30m", color: "#3B82F6" },
-    { name: "Others", value: 6, hours: "20h 0m", color: "#9CA3AF" }
+    { name: "Engineering", value: 42, hours: "142h 30m", color: "#1D4ED8" },
+    { name: "Design",      value: 25, hours: "85h 15m",  color: "#F59E0B" },
+    { name: "Marketing",   value: 16, hours: "56h 30m",  color: "#8B5CF6" },
+    { name: "Product",     value: 11, hours: "38h 30m",  color: "#22C55E" },
+    { name: "Others",      value: 6,  hours: "20h 0m",   color: "#9CA3AF" }
   ],
   progress: [
-    { name: "Completed", value: 69, count: 89, color: "#14B8A6" },
+    { name: "Completed",   value: 69, count: 89, color: "#14B8A6" },
     { name: "In Progress", value: 22, count: 28, color: "#F59E0B" },
-    { name: "On Hold", value: 5, count: 7, color: "#EF4444" },
-    { name: "Not Started", value: 11, count: 14, color: "#9CA3AF" }
+    { name: "On Hold",     value: 5,  count: 7,  color: "#EF4444" },
+    { name: "Not Started", value: 11, count: 14, color: "#D1D5DB" }
   ],
   trendData: [
     { name: "Wk 1", progress: 15 },

@@ -8,7 +8,8 @@ import {
   Users,
   Building2,
   FileText,
-  ChevronLeft
+  ChevronLeft,
+  ChevronDown
 } from 'lucide-react';
 import styles from './Sidebar.module.css';
 
@@ -27,10 +28,8 @@ export default function Sidebar() {
   return (
     <aside className={`${styles.sidebar} ${collapsed ? styles.collapsed : ''}`}>
       <div className={styles.logoSection}>
-        <div className={styles.logoMark}>
-          <div className={styles.logoInner}></div>
-        </div>
-        {!collapsed && <span className={styles.logoText}>Dashboard</span>}
+        <div className={styles.logoBadge}>TG</div>
+        {!collapsed && <span className={styles.logoText}>Tech2Globe</span>}
       </div>
 
       <nav className={styles.nav}>
@@ -55,7 +54,7 @@ export default function Sidebar() {
                       />
                     )}
                   </AnimatePresence>
-                  <Icon className={styles.navIcon} size={20} strokeWidth={isActive ? 2.5 : 2} />
+                  <Icon className={styles.navIcon} size={18} strokeWidth={isActive ? 2.5 : 2} />
                   {!collapsed && <span className={styles.navLabel}>{item.label}</span>}
                 </button>
               </li>
@@ -67,7 +66,7 @@ export default function Sidebar() {
       <div className={styles.bottomSection}>
         <div className={styles.userCard}>
           <div className={styles.avatar}>
-            <img src="/assests/tech2globe-logo.webp" alt="Tech2Globe Logo" />
+            <img src="/assets/tech2globe-logo.webp" alt="Tech2Globe Logo" />
           </div>
           {!collapsed && (
             <div className={styles.userInfo}>
@@ -77,12 +76,23 @@ export default function Sidebar() {
           )}
         </div>
 
-        <button
-          className={styles.collapseButton}
-          onClick={() => setCollapsed(!collapsed)}
-        >
-          <ChevronLeft size={16} className={collapsed ? styles.rotated : ''} />
-        </button>
+        {!collapsed && (
+          <button
+            className={styles.collapseButton}
+            onClick={() => setCollapsed(!collapsed)}
+          >
+            <ChevronLeft size={14} />
+          </button>
+        )}
+        {collapsed && (
+          <button
+            className={styles.collapseButton}
+            onClick={() => setCollapsed(!collapsed)}
+            style={{ margin: '0 auto' }}
+          >
+            <ChevronLeft size={14} className={styles.rotated} />
+          </button>
+        )}
       </div>
     </aside>
   );

@@ -7,10 +7,8 @@ import { motion } from 'framer-motion';
 import styles from './TaskProgressChart.module.css';
 
 export default function TaskProgressChart({ data }) {
-  const total = data.reduce((sum, item) => sum + item.count, 0);
-
   return (
-    <motion.div 
+    <motion.div
       className={styles.card}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -25,24 +23,26 @@ export default function TaskProgressChart({ data }) {
 
       <div className={styles.content}>
         <div className={styles.chartContainer}>
-          <ResponsiveContainer width="100%" height={200}>
+          <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
                 data={data}
                 cx="50%"
                 cy="50%"
-                innerRadius={60}
-                outerRadius={80}
+                innerRadius={58}
+                outerRadius={82}
                 paddingAngle={2}
                 dataKey="value"
                 stroke="none"
+                startAngle={90}
+                endAngle={-270}
               >
                 {data.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={entry.color} />
                 ))}
               </Pie>
-              <Tooltip 
-                contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
+              <Tooltip
+                contentStyle={{ borderRadius: '8px', border: '1px solid #E5E7EB', boxShadow: '0 4px 12px rgba(0,0,0,0.08)', fontSize: '0.8rem' }}
                 itemStyle={{ color: '#111827', fontWeight: 500 }}
               />
             </PieChart>

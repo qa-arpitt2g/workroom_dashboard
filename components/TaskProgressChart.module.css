@@ -1,9 +1,9 @@
 .card {
   background-color: var(--card-bg);
   border-radius: var(--border-radius);
-  padding: 24px;
+  padding: 22px 24px;
   border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
 }
@@ -12,11 +12,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .title {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text-main);
   margin: 0;
@@ -26,23 +26,31 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
   background: none;
   border: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: var(--transition-smooth);
+}
+
+.filterButton:hover {
+  background-color: var(--hover-bg);
+  color: var(--text-main);
 }
 
 .content {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   gap: 24px;
-  flex: 1;
 }
 
 .chartContainer {
   position: relative;
-  height: 200px;
-  width: 100%;
+  height: 180px;
+  width: 180px;
+  flex-shrink: 0;
 }
 
 .centerLabel {
@@ -57,21 +65,26 @@
 }
 
 .centerValue {
-  font-size: 1.8rem;
+  font-size: 1.65rem;
   font-weight: 700;
   color: var(--text-main);
+  line-height: 1.1;
 }
 
 .centerText {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--text-secondary);
-  max-width: 80px;
+  max-width: 72px;
+  text-align: center;
+  line-height: 1.3;
+  margin-top: 2px;
 }
 
 .legend {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+  flex: 1;
 }
 
 .legendItem {
@@ -87,9 +100,10 @@
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .legendName {
@@ -99,38 +113,17 @@
 
 .legendRight {
   display: flex;
-  gap: 6px;
+  gap: 5px;
   align-items: center;
 }
 
 .legendCount {
   font-size: 0.85rem;
   color: var(--text-main);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .legendPercent {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--text-secondary);
-}
-
-@media (max-width: 768px) {
-  .content {
-    flex-direction: row;
-    align-items: center;
-  }
-  
-  .chartContainer {
-    flex: 1;
-  }
-  
-  .legend {
-    flex: 1;
-  }
-}
-
-@media (max-width: 480px) {
-  .content {
-    flex-direction: column;
-  }
 }
