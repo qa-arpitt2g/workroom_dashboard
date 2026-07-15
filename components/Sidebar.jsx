@@ -1,13 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { 
-  Home, 
-  CheckSquare, 
-  Users, 
-  Building2, 
-  FileText, 
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  Home,
+  CheckSquare,
+  Users,
+  Building2,
+  FileText,
   ChevronLeft
 } from 'lucide-react';
 import styles from './Sidebar.module.css';
@@ -38,21 +38,23 @@ export default function Sidebar() {
           {menuItems.map((item) => {
             const Icon = item.icon;
             const isActive = activeItem === item.id;
-            
+
             return (
               <li key={item.id} className={styles.navItem}>
-                <button 
+                <button
                   className={`${styles.navButton} ${isActive ? styles.active : ''}`}
                   onClick={() => setActiveItem(item.id)}
                 >
-                  {isActive && (
-                    <motion.div 
-                      layoutId="activeIndicator"
-                      className={styles.activeIndicator}
-                      initial={false}
-                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    />
-                  )}
+                  <AnimatePresence>
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeIndicator"
+                        className={styles.activeIndicator}
+                        initial={false}
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      />
+                    )}
+                  </AnimatePresence>
                   <Icon className={styles.navIcon} size={20} strokeWidth={isActive ? 2.5 : 2} />
                   {!collapsed && <span className={styles.navLabel}>{item.label}</span>}
                 </button>
@@ -65,17 +67,17 @@ export default function Sidebar() {
       <div className={styles.bottomSection}>
         <div className={styles.userCard}>
           <div className={styles.avatar}>
-            <img src="https://i.pravatar.cc/150?u=a042581f4e29026024d" alt="User Avatar" />
+            <img src="/assests/tech2globe-logo.webp" alt="Tech2Globe Logo" />
           </div>
           {!collapsed && (
             <div className={styles.userInfo}>
-              <span className={styles.userName}>Thomas Gepsan</span>
+              <span className={styles.userName}>Tech2Globe</span>
               <span className={styles.userRole}>Super Admin</span>
             </div>
           )}
         </div>
-        
-        <button 
+
+        <button
           className={styles.collapseButton}
           onClick={() => setCollapsed(!collapsed)}
         >

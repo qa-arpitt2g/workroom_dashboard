@@ -1,57 +1,32 @@
 .card {
   background-color: var(--card-bg);
   border-radius: var(--border-radius);
-  padding: 24px;
+  padding: 20px;
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
+  gap: 16px;
   height: 100%;
 }
 
+/* ── Header ── */
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
 }
 
 .title {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text-main);
   margin: 0;
 }
 
-.reportButton {
-  font-size: 0.85rem;
-  color: var(--primary);
-  font-weight: 500;
-  background: none;
-  border: none;
-}
-
-.reportButton:hover {
-  text-decoration: underline;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  flex: 1;
-}
-
-.chartSection {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
+/* ── Donut chart ── */
 .chartContainer {
   position: relative;
-  flex: 1;
-  min-width: 200px;
+  width: 100%;
 }
 
 .centerLabel {
@@ -62,80 +37,73 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  pointer-events: none;
 }
 
 .centerValue {
-  font-size: 1.4rem;
+  font-size: 1.55rem;
   font-weight: 700;
   color: var(--text-main);
+  line-height: 1.1;
+}
+
+.centerSub {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
   line-height: 1.2;
 }
 
-.centerValueSmall {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--text-main);
-  line-height: 1;
-}
-
+/* ── Legend grid ── */
 .legend {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 8px;
 }
 
 .legendItem {
   display: flex;
-  gap: 12px;
   align-items: flex-start;
+  gap: 8px;
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
-  margin-top: 4px;
+  margin-top: 3px;
   flex-shrink: 0;
 }
 
 .legendInfo {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  min-width: 0;
+  gap: 1px;
 }
 
 .legendName {
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 500;
   color: var(--text-main);
 }
 
-.legendDetails {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.legendHours {
-  font-size: 0.8rem;
+.legendMeta {
+  font-size: 0.78rem;
   color: var(--text-secondary);
 }
 
 .legendPercent {
-  font-size: 0.8rem;
   color: var(--text-secondary);
 }
 
+/* ── Insight strip ── */
 .insightCard {
-  background-color: rgba(15, 118, 110, 0.05);
-  border-radius: 12px;
-  padding: 16px;
+  background-color: rgba(15, 118, 110, 0.06);
+  border-radius: 10px;
+  padding: 10px 14px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .insightIcon {
@@ -144,13 +112,8 @@
 }
 
 .insightText {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--primary);
   margin: 0;
-}
-
-@media (max-width: 1024px) {
-  .chartSection {
-    flex-direction: column;
-  }
+  line-height: 1.4;
 }
